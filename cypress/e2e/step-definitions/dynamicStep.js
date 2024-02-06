@@ -12,10 +12,10 @@ Then(/^the user should see the "([^"]*)" heading$/, (heading) => {
 })
 
 Then(/^the user should see the table with the headers below$/, (dataTable) => {
-	const arr = dataTable.rawTable.flat()
+	const headers = dataTable.rawTable.flat()
 	
 	dynamicTablesPage.getTableHeader().each(($el, index) => {
-		cy.wrap($el.text().trim()).should('eq', arr[index])
+		cy.wrap($el.text()).should('eq', headers[index])
 	})
 })
 
@@ -73,10 +73,10 @@ Then(/^the user enters the price as "([^"]*)"$/, (price) => {
 });
 
 Then(/^the user should see the table with the new row below$/, (dataTable) => {
-	const arr = dataTable.rawTable.flat()
+	const table = dataTable.rawTable.flat()
 	
 	dynamicTablesPage.getNewRow().each(($el, index) => {
-		cy.wrap($el.text()).should('eq', arr[index])
+		cy.wrap($el.text()).should('eq', table[index])
 	})
 
 });
